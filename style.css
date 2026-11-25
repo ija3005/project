@@ -1,0 +1,424 @@
+/*This is to reset the page to make spacing everything easier to control.*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f7eef7;
+
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 110, 140, 0.14), transparent 24%),
+        radial-gradient(circle at 70% 30%, rgba(120, 40, 90, 0.18), transparent 28%),
+        radial-gradient(circle at 50% 60%, rgba(255, 80, 120, 0.12), transparent 26%),
+        linear-gradient(135deg, #080308 0%, #160912 45%, #050207 100%);
+
+    overflow-x: hidden;
+}
+
+
+/* Styles the title area at the top */
+.site-header {
+    padding: 14px 28px 10px;
+}
+
+.site-header h1 {
+    font-size: 32px;
+    color: #ffe6f0;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 4px;
+
+    text-shadow: 0 0 25px rgba(255, 120, 170, 0.22);
+}
+
+.site-header p {
+    max-width: 620px;
+
+    color: #d7bfd0;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+
+
+/* this is the main layout which holds the left panel, canvas and right panel */
+.layout {
+    width: 98%;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 190px 1fr 230px;
+
+    gap: 14px;
+
+    align-items: stretch;
+}
+
+
+/* Adds a glass effect to all panels */
+.control-panel,
+.canvas-panel,
+.state-panel {
+
+    background:
+        linear-gradient(180deg, rgba(28, 10, 24, 0.82), rgba(10, 4, 12, 0.78));
+
+    border: 1px solid rgba(255, 120, 170, 0.18);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 35px rgba(255, 70, 120, 0.12),
+        inset 0 0 45px rgba(255, 255, 255, 0.02);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* left action panel */
+.control-panel {
+    padding: 14px;
+
+    min-height: 600px;
+}
+
+.control-panel h2,
+.state-panel h2 {
+
+    font-size: 15px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #ffd3e5;
+
+    margin-bottom: 14px;
+}
+
+button{
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+button img {
+    width: 24px;
+
+    height: 24px;
+
+    object-fit: contain;
+}
+
+#resetBtn {
+    justify-content: center;
+}
+
+
+
+
+/* For the small explanation*/
+.small-text {
+    color: #d1b7c7;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 22px;
+}
+
+
+/* This will keep the action buttons stacked neatly */
+.action-buttons {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* The main button styling */
+button {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid rgba(255, 120, 170, 0.22);
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(135deg, rgba(55, 18, 42, 0.92), rgba(20, 8, 18, 0.92));
+
+    color: #f7eef7;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    text-align: left;
+
+    box-shadow:
+        inset 0 0 18px rgba(255, 255, 255, 0.02);
+}
+
+
+/* This makes the buttons glow when the user hovers over them */
+button:hover {
+
+    background:
+        linear-gradient(135deg, rgba(120, 35, 80, 0.96), rgba(40, 12, 32, 0.96));
+
+    border-color: #ff8bb4;
+
+    box-shadow:
+        0 0 18px rgba(255, 120, 170, 0.32),
+        inset 0 0 18px rgba(255, 255, 255, 0.03);
+
+    transform: translateY(-2px);
+}
+
+
+/* The reset button has a slightly different style */
+#resetBtn {
+
+    margin-top: 18px;
+
+    border-color: rgba(255, 170, 200, 0.25);
+
+    color: #ffd5e5;
+
+    text-align: center;
+}
+
+
+/* Middle area where the p5 canvas will go */
+.canvas-panel {
+
+    min-height: 600px;
+
+    padding: 8px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* This adds a soft glow inside the main canvas section */
+.canvas-panel::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(circle at 35% 45%, rgba(255, 120, 170, 0.10), transparent 28%),
+        radial-gradient(circle at 65% 45%, rgba(160, 50, 100, 0.12), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(255, 180, 220, 0.08), transparent 22%);
+
+    pointer-events: none;
+}
+
+
+/* where p5/js places the canvas */
+#canvas-container {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 580px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* makes the canvas fit inside the panel better */
+#canvas-container canvas {
+
+    display: block;
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    border-radius: 12px;
+}
+
+
+/* right emotional state panel */
+.state-panel {
+
+    padding: 14px;
+
+    min-height: 600px;
+}
+
+
+/* For every emotional state section */
+.state-item {
+
+    margin-top: 14px;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid rgba(255, 190, 220, 0.12);
+}
+
+.state-item span {
+
+    display: block;
+
+    color: #ffe6f0;
+
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.hidden-state {
+    display: none;
+}
+
+.hidden-state.show {
+    display: block;
+}
+
+#stressBar {
+
+    background: linear-gradient(90deg, #ff5b8f, #ff9e80);
+
+    box-shadow: 0 0 14px rgba(255, 90, 140, 0.4);
+}
+
+#calmBar {
+
+    background: linear-gradient(90deg, #ffb6d2, #ffe0ec);
+
+    box-shadow: 0 0 14px rgba(255, 180, 210, 0.35);
+}
+
+.state-item p {
+
+    margin-top: 5px;
+
+    color: #ff9bc2;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    text-shadow: 0 0 18px rgba(255, 120, 170, 0.25);
+}
+
+/* Background for the empty bar*/
+.bar {
+
+    width: 100%;
+
+    height: 8px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+
+/* Adding the coloured part of the bar */
+.bar-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: 999px;
+
+    background: linear-gradient(90deg, #ff6e9d, #ffb4d2);
+
+    transition: width 0.3s ease;
+
+    box-shadow: 0 0 14px rgba(255, 120, 170, 0.35);
+}
+
+
+
+/* This will give awareness a warmer colour */
+#awarenessBar {
+
+    background: linear-gradient(90deg, #ff9cba, #ffd7e5);
+
+    box-shadow: 0 0 14px rgba(255, 150, 190, 0.35);
+}
+
+
+/* Gives validation a purple colour */
+#validationBar {
+
+    background: linear-gradient(90deg, #c45fff, #f1b6ff);
+
+    box-shadow: 0 0 14px rgba(196, 95, 255, 0.35);
+}
+
+
+/* For footer text at the bottom */
+footer {
+
+    width: 97%;
+
+    margin: 10px auto 16px;
+
+    color: #d1b7c7;
+
+    font-size: 14px;
+}
+
+
+let pinkStrength = map(anxiety + validation, 0, 200, 90, 240);
+let redStrength = map(awareness, 0, 100, 70, 230);
+
+/* this is to help the layout work better on smaller screens */
+@media (max-width: 1000px) {
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .canvas-panel {
+        min-height: 480px;
+    }
+
+    .site-header h1 {
+        font-size: 38px;
+    }
+}
+

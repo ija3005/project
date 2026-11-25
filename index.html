@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">   
+
+<title>Ritual loop</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>Ritual loop</h1>
+        <p>
+            An interactive visualisation exploring how repeated actions can shape time attention, and our identity.
+        </p>
+    </header>
+
+<main class="layout">
+
+    <!--Left action panel-->
+    <section class="control-panel">
+        <p class="small-text">
+         Each action chosen can change the loop and leave a trace.   
+        </p>
+
+        
+ <div class="action-buttons"> 
+
+    <button id="scrollBtn">
+        <img src="images/phone.png" alt="phone icon">
+        <span>Scroll</span>
+    </button>
+
+    <button id="postBtn">
+        <img src="images/like.png" alt="like icon">
+        <span>Post</span>
+    </button>
+
+    <button id="prayBtn">
+        <img src="images/pray.png" alt="pray icon">
+        <span>Pray</span>
+    </button>
+
+    <button id="reflectBtn">
+        <img src="images/reflection.png" alt="reflection icon">
+        <span>Reflect</span>
+    </button>
+
+    <button id="restBtn">
+        <img src="images/moon.png" alt="moon icon">
+        <span>Rest</span>
+    </button>
+</div>
+
+        <button id="resetBtn">Reset</button>
+    </section>
+
+
+    <!--Main area-->
+    <section class="canvas-panel">
+        <div id="canvas-container"></div>
+    </section>
+
+
+    <!--Right section-->
+    <section class="state-panel">
+        <h2>Emotional State</h2>
+
+        <div class="state-item">
+            <span>Anxiety</span>
+            <div class="bar">
+            <div id="anxietyBar" class="bar-fill"></div>
+            </div>
+            <p id="anxietyValue">0</p>
+        </div>
+
+        <div class="state-item">
+            <span>Validation</span> 
+            <div class="bar">
+                <div id="validationBar" class="bar-fill"></div>
+            </div>
+            <p id="validationValue">0</p>
+
+        <div class="state-item">
+            <span>Awareness</span>
+            <div class="bar">
+                <div id="awarenessBar" class="bar-fill"></div>
+            </div>
+            <p id="awarenessValue">0</p>
+</div>
+
+        <div class="state-item hidden-state" id="stressState">
+          <span>Stress</span>
+          <div class="bar">
+            <div id="stressBar" class="bar-fill"></div>
+    </div>
+    <p id="stressValue">0</p>
+</div>
+
+<div class="state-item hidden-state" id="calmState">
+    <span>Calm</span>
+    <div class="bar">
+        <div id="calmBar" class="bar-fill"></div>
+    </div>
+    <p id="calmValue">0</p>
+</div>
+
+
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Repeated actions can accumulate into patterns.
+</footer>
+
+<script src="main.js"></script>
+</body>
